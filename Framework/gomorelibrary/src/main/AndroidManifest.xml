@@ -8,23 +8,7 @@
 
     <application
         android:allowBackup="true"
-        android:supportsRtl="true"
-        >
-        <activity
-            android:name=".update.core.VersionDialogActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/versionCheckTransparentTheme" />
-        <provider
-            android:name="com.gomore.gomorelibrary.update.core.VersionFileProvider"
-            android:authorities="${applicationId}.versionProvider"
-            android:grantUriPermissions="true"
-            android:exported="false">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/versionchecklib_file_paths" />
-        </provider>
-    </application>
+        android:supportsRtl="true"></application>
 
 
 </manifest>

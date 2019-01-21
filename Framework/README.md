@@ -63,41 +63,7 @@
     viewPager.setViewpagerAnimation(HorizontalViewPager.VIEWPAGER_ANIMATION_ZOOMOUT);//设置ViewPager切换动画
 
 
-
-### 六、版本检测升级（更新）库(支持通知栏显示，可设置静默下载)
-
-1. 自定义service继承 `VersionService `，实现其中的 `onResponses(VersionService service, String response)`抽象方法.该方法主要是请求版本接口的回调，由于不同的使用者版本检测接口返回数据类型不一致，所以你需要自己解析数据，判断版本号之后调用升级对话框，如果使用库默认的界面直接调用如下方法: `service.showVersionDialog(downloadUrl,title,updateMsg )`
-
-        if (serverVersion > clientVersion) {
-    	     //传入下载地址，以及版本更新消息，bundle可附带更多信息
-    	    service.showVersionDialog(downloadUrl,title,updateMsg,bundle);
-        }
-
-2. 在任意地方开启自定义service，并传入`VersionParam`
-
-    ```
-        VersionParams.Builder builder = new VersionParams.Builder()
-                 .setRequestUrl("请求服务器版本信息的接口地址")
-                 .setService(DemoService.class);
-        //可配置通知栏图标
-        DownloadManager.NotificationIcon = R.mipmap.palmmall_launcher_icon;
-        AllenChecker.startVersionCheck(this, builder.build());
-    ```
-
-3. 可自定义升级弹框，只需创建一个继承自DialogActivity`的Activity,Activity设置Theme为透明
-
-     android:theme="@style/versionCheckLibvtransparentTheme"`
-
-开启Service的之前，记住将自定义的Activity传入VersionParams
-
-      `setCustomDownloadActivityClass(CustomVersionDialogActivity.class)`
-
-调用父类`getVersionTitle()` ,`getVersionUpdateMsg()`,`getVersionParamBundle()`方法,这是从service传过来的值，可以在自定义界面使用
-
-使用详情具体见：(https://github.com/AlexLiuSheng/CheckVersionLib)
-
-
-### 七、标题栏查询搜索 -> MaterialSearchView
+### 六、标题栏查询搜索 -> MaterialSearchView
 
  ——Usage
 
@@ -161,6 +127,6 @@ Step 1. Add the JitPack repository to your build file
 
 Step 2. Add the dependency
 
-dependencies {
+    dependencies {
 	        compile 'com.github.gomoretech:AndroidFramework:1.2.3'
 	}
